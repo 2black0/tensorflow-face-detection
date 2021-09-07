@@ -93,10 +93,22 @@ if __name__ == "__main__":
     cap.set(4, 480)
     windowNotSet = True
     
+    fps_count = True
+    prev_frame_time = 0
+    new_frame_time = 0
+
     while True:
         ret, image = cap.read()
         if ret == 0:
             break
+
+        if fps_count is True:
+            new_frame_time = time.time()
+            fps = 1/(new_frame_time-prev_frame_time)
+            prev_frame_time = new_frame_time
+            fps = int(fps)
+            fps = str(fps)
+            cv2.putText(image, fps, (5, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (100, 255, 0), 2, cv2.LINE_AA)
 
         [h, w] = image.shape[:2]
         print (h, w)
