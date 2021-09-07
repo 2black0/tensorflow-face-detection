@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
         [h, w] = image.shape[:2]
         print (h, w)
-        image = cv2.flip(image, 1)
+        #image = cv2.flip(image, 1)
 
         (boxes, scores, classes, num_detections) = tDetector.run(image)
 
